@@ -37,7 +37,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Get Haml templating
-gem 'haml'
 gem "haml-rails", "~> 1.0"
 
 # Bootstrap views
@@ -78,7 +77,8 @@ group :test do
   gem 'chromedriver-helper'
 
   # One liner for RSpec
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'rails-controller-testing'
 
   # Tests
   gem 'cucumber-rails', require: false
