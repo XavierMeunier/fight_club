@@ -1,11 +1,24 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
     %title FightClub
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  
   %body
-    = yield
+    
+    %container
+      %div{class: 'row justify-content-center'}
+        %div{class: 'col-md-6'}
+          = render 'layouts/nav'
+
+          %h1= yield :title
+
+          %p{:class => 'notice'}= notice
+          %p{:class => 'alert'}= alert
+      %div{class: 'row justify-content-center'}
+        %div{class: 'col-md-8'}
+          = yield
