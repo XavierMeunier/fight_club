@@ -3,7 +3,7 @@ class FightersController < ApplicationController
 
   # GET /fighters
   def index
-    @fighters = Fighter.all
+    @fighters = Fighter.all.order(level: :asc)
   end
 
   # GET /fighters/1
@@ -81,7 +81,7 @@ class FightersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fighter_params
-      params.require(:fighter).permit(:name)
+      params.require(:fighter).permit(:name, :avatar)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
