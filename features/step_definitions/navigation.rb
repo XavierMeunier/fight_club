@@ -14,6 +14,10 @@ Given("I visit fighter shape page") do
   visit shape_fighter_path(@fighter)
 end
 
+Given("I visit new fighter page") do
+  visit new_fighter_path(@fighter)
+end
+
 When("I click on {string}") do |button_name|
   click_on button_name
 end

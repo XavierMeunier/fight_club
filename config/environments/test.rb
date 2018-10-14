@@ -18,6 +18,9 @@ Rails.application.configure do
     'Cache-Control' => "public, max-age=#{1.hour.to_i}"
   }
 
+  # File upload path for tests
+  Paperclip::Attachment.default_options[:path] = "#{Rails.root}/spec/test_files/:class/:style.:extension"
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

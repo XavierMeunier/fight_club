@@ -48,8 +48,15 @@ Then("I should not see shape button") do
   expect(page).to_not have_css("a", :text => "Shape")
 end
 
-When("I complete the shape upgrade fighter") do
+When("I complete the shape upgrade fighter form") do
   find(:xpath, "//input[@id='fighter_health_range']").set (@fighter.health + @fighter.available_upgrade/2)
   find(:xpath, "//input[@id='fighter_strength_range']").set (@fighter.strength + @fighter.available_upgrade/2)
   click_button("Shape")
+end
+
+When("I complete the new fighter form") do
+  @fighter = build(:fighter, :with_avatar)
+  fill_in('Name', :with => @fighter.name)
+  attach_file('Avatar', @fighter.avatar.path)
+  click_button("Create Fighter")  
 end

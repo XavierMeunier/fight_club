@@ -34,3 +34,8 @@ Feature: Visitor navigation
     Given a fighter without available upgrade exists
     Given I visit fighter page
     Then I should not see shape button
+
+  Scenario: Check navigation to new fighter page
+    Given I visit fighters page
+    When I click on "New Fighter"
+    Then I should be on new fighter page

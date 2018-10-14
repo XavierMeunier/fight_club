@@ -19,5 +19,10 @@ FactoryBot.define do
 
       available_upgrade   { 0 }
     end
+
+    trait :with_avatar do
+      avatar { File.new("#{Rails.root}/spec/support/features/image.jpg") }
+    end
+    
   end
 end
