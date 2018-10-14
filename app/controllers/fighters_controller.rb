@@ -3,7 +3,7 @@ class FightersController < ApplicationController
 
   # GET /fighters
   def index
-    @fighters = Fighter.all.order(level: :asc)
+    @fighters = Fighter.all.order(level: :asc).page params[:page]
   end
 
   # GET /fighters/1
