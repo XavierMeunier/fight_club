@@ -3,5 +3,5 @@ Feature: Fighters
 
   Scenario: List all fighters
     Given Multiple fighters exist
-    Given I visit fighters list page
+    Given I visit fighters page
     Then I should see all fighters
