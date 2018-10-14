@@ -1,5 +1,7 @@
 = content_for :title, "Fighter"
 
+%p.avatar
+  = image_tag @fighter.avatar.url(:medium)
 %p.name
   %b Name:
   = @fighter.name

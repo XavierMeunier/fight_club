@@ -5,6 +5,7 @@
 %table.table
   %thead
     %tr
+      %th 
       %th Name
       %th Level
       %th
@@ -12,6 +13,7 @@
   %tbody
     - @fighters.each do |fighter|
       %tr
+        %td= image_tag fighter.avatar.url(:thumb)
         %td= fighter.name
         %td= fighter.level
         %td= link_to 'Show', fighter, class: "btn btn-info"
