@@ -16,5 +16,5 @@ Feature: Fighters
     Given I visit fighter shape page
     When I complete the shape upgrade fighter
     Then I should be on fighter page
-    Then I should see fighter attributes
+    Then I should see upgraded fighter attributes
     Then I should not see shape button

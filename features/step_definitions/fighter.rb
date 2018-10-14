@@ -23,12 +23,21 @@ Then("I should see all fighters") do
 end
 
 Then("I should see fighter attributes") do
-  expect(page).to have_css("p", :text => @fighter.name)
-  expect(page).to have_css("p", :text => @fighter.health)
-  expect(page).to have_css("p", :text => @fighter.strength)
-  expect(page).to have_css("p", :text => @fighter.experience)
-  expect(page).to have_css("p", :text => @fighter.level)
-  expect(page).to have_css("p", :text => @fighter.available_upgrade)
+  expect(page).to have_css("p.name", :text => @fighter.name)
+  expect(page).to have_css("p.health", :text => @fighter.health)
+  expect(page).to have_css("p.strength", :text => @fighter.strength)
+  expect(page).to have_css("p.experience", :text => @fighter.experience)
+  expect(page).to have_css("p.level", :text => @fighter.level)
+  expect(page).to have_css("p.available_upgrade", :text => @fighter.available_upgrade)
+end
+
+Then("I should see upgraded fighter attributes") do
+  expect(page).to have_css("p.name", :text => @fighter.name)
+  expect(page).to have_css("p.health", :text => @fighter.reload.health)
+  expect(page).to have_css("p.strength", :text => @fighter.reload.strength)
+  expect(page).to have_css("p.experience", :text => @fighter.experience)
+  expect(page).to have_css("p.level", :text => @fighter.level)
+  expect(page).to have_css("p.available_upgrade", :text => @fighter.reload.available_upgrade)
 end
 
 Then("I should see shape button") do

@@ -17,7 +17,7 @@ FactoryBot.define do
       # Turn off validations so we can create fighter without experience
       to_create {|instance| instance.save(validate: false) }
 
-      available_upgrade   0
+      available_upgrade   { 0 }
     end
   end
 end
