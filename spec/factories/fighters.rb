@@ -1,10 +1,16 @@
 FactoryBot.define do
   factory :fighter do
-    name { "MyString" }
-    health { 1 }
-    strengh { 1 }
-    experience { 1 }
-    level { 1 }
-    available_upgrade { 1 }
+    name                { Faker::Name.name  }
+
+    trait :advanced_fighter do
+      # Turn off validations so we can create experienced fighter
+      to_create {|instance| instance.save(validate: false) }
+
+      health              { Faker::Number.between(1,100) }
+      strengh             { Faker::Number.between(1,100) }
+      experience          { Faker::Number.between(1,100) }
+      level               { Faker::Number.between(1,100) }
+      available_upgrade   { Faker::Number.between(1,100) }
+    end
   end
 end
