@@ -1,24 +1,28 @@
-%p#notice= notice
+= content_for :title, "Fighter"
 
-%p
+%p.name
   %b Name:
   = @fighter.name
-%p
+%p.health
   %b Health:
   = @fighter.health
-%p
-  %b Strengh:
-  = @fighter.strengh
-%p
+%p.strength
+  %b strength:
+  = @fighter.strength
+%p.experience
   %b Experience:
   = @fighter.experience
-%p
+%p.level
   %b Level:
   = @fighter.level
-%p
+%p.available_upgrade
   %b Available upgrade:
   = @fighter.available_upgrade
 
-= link_to 'Edit', edit_fighter_path(@fighter)
-\|
-= link_to 'Back', fighters_path
+= link_to 'Shape', shape_fighter_path(@fighter), class: "btn btn-success" if @fighter.available_upgrade > 0
+
+= link_to 'Edit', edit_fighter_path(@fighter), class: "btn btn-warning"
+
+= link_to 'Destroy', @fighter, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+= link_to 'Back', fighters_path, class: "btn btn-secondary"

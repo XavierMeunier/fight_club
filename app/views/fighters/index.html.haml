@@ -1,31 +1,19 @@
 = content_for :title, "Fighters"
 
-%table
+= link_to 'New Fighter', new_fighter_path, class: "btn btn-success"
+
+%table.table
   %thead
     %tr
       %th Name
-      %th Health
-      %th Strengh
-      %th Experience
       %th Level
-      %th Available upgrade
-      %th
-      %th
       %th
 
   %tbody
     - @fighters.each do |fighter|
       %tr
         %td= fighter.name
-        %td= fighter.health
-        %td= fighter.strengh
-        %td= fighter.experience
         %td= fighter.level
-        %td= fighter.available_upgrade
-        %td= link_to 'Show', fighter
-        %td= link_to 'Edit', edit_fighter_path(fighter)
-        %td= link_to 'Destroy', fighter, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', fighter, class: "btn btn-info"
 
 %br
-
-= link_to 'New Fighter', new_fighter_path

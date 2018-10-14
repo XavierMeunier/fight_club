@@ -1,7 +1,7 @@
-%h1 Editing fighter
+= content_for :title, "Editing fighter"
 
 = render 'form'
 
-= link_to 'Show', @fighter
-\|
-= link_to 'Back', fighters_path
+= link_to 'Show', @fighter, class: "btn btn-info"
+
+= link_to 'Back', fighters_path, class: "btn btn-secondary"

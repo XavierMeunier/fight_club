@@ -1,0 +1,21 @@
+-# frozen_string_literal: true
+= simple_form_for @fighter, url: upgrade_fighter_path, method: :post do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+
+    .form-group
+      = f.label :health
+      %span{name: "health_output", id: "health_output"}
+        = @fighter.health + (@fighter.available_upgrade / 2)
+      = f.input :health, as: :range, input_html: { id: "fighter_health_range", min: @fighter.health, max: (@fighter.health + @fighter.available_upgrade), step: '1', value: (@fighter.health + @fighter.available_upgrade/2)}, label: false
+    
+    .form-group
+      = f.label :strength
+      %span{name: "strength_output", id: "strength_output"}
+        = @fighter.strength + (@fighter.available_upgrade / 2)
+      = f.input :strength, as: :range, input_html: { id: "fighter_strength_range", min: @fighter.strength, max: (@fighter.strength + @fighter.available_upgrade), step: '1', value: (@fighter.strength + @fighter.available_upgrade/2)}, label: false
+    
+  .form-actions
+    = f.button :submit, "Shape", class: "btn btn-success"

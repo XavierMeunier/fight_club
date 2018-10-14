@@ -1,0 +1,8 @@
+= content_for :title, "Shape fighter"
+
+%div#current_status{"data-fighter-health": @fighter.health, "data-fighter-strength": @fighter.strength, "data-fighter-available_upgrade": @fighter.available_upgrade}
+  Available upgrade: #{@fighter.available_upgrade}
+
+= render 'shape_form'
+
+= link_to 'Show', @fighter, class: "btn btn-info"
