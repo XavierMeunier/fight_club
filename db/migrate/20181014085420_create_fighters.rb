@@ -3,7 +3,7 @@ class CreateFighters < ActiveRecord::Migration[5.2]
     create_table :fighters do |t|
       t.string :name
       t.integer :health
-      t.integer :strengh
+      t.integer :strength
       t.integer :experience
       t.integer :level
       t.integer :available_upgrade

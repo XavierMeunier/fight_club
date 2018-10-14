@@ -16,12 +16,12 @@ end
   level   = Faker::Number.between(1,100)
   available_upgrade = level*10
   health  = Faker::Number.between(1,available_upgrade)
-  strengh = available_upgrade - health
+  strength = available_upgrade - health
 
   fighter = Fighter.new({
     name:         Faker::Name.name,
     health:       health,
-    strengh:      strengh,
+    strength:      strength,
     experience:   0,
     level:        level,
     available_upgrade: 0

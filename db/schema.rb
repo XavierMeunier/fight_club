@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_10_14_085420) do
   create_table "fighters", force: :cascade do |t|
     t.string "name"
     t.integer "health"
-    t.integer "strengh"
+    t.integer "strength"
     t.integer "experience"
     t.integer "level"
     t.integer "available_upgrade"
