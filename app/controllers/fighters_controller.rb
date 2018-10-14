@@ -47,11 +47,14 @@ class FightersController < ApplicationController
     end
   end
 
-  # POST /fighters/1
+  # POST /fighters/1/upgrade
   def upgrade
-    valid_upgrade = UpgradeFighterValidationService.new(@fighter, fighter_upgrade_params).call
+    valid_upgrade = UpgradeFighterValidationService.new(@fighter, fighter_input_upgrade_params).call
     
-    fighter_upgrade_params[:available_upgrade] = 0 if valid_upgrade
+    if valid_upgrade
+      # Not using fighter_input_upgrade_params to reset available_upgrade without any external input
+      fighter_upgrade_params = fighter_input_upgrade_params.merge(available_upgrade: 0)
+    end
 
     respond_to do |format|
       if valid_upgrade && @fighter.update(fighter_upgrade_params)
@@ -63,7 +66,6 @@ class FightersController < ApplicationController
   end
 
   # DELETE /fighters/1
-  # DELETE /fighters/1.json
   def destroy
     @fighter.destroy
     respond_to do |format|
@@ -83,7 +85,8 @@ class FightersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def fighter_upgrade_params
+    def fighter_input_upgrade_params
       params.require(:fighter).permit(:health, :strength)
     end
+
 end
