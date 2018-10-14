@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @fighter.name
+%p
+  %b Health:
+  = @fighter.health
+%p
+  %b Strengh:
+  = @fighter.strengh
+%p
+  %b Experience:
+  = @fighter.experience
+%p
+  %b Level:
+  = @fighter.level
+%p
+  %b Available upgrade:
+  = @fighter.available_upgrade
+
+= link_to 'Edit', edit_fighter_path(@fighter)
+\|
+= link_to 'Back', fighters_path
