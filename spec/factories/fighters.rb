@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :fighter do
-    name                { Faker::Name.name  }
+    name                { Faker::Name.name }
 
     trait :advanced_fighter do
       # Turn off validations so we can create experienced fighter
