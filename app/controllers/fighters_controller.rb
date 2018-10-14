@@ -49,7 +49,7 @@ class FightersController < ApplicationController
 
   # POST /fighters/1
   def upgrade
-    valid_upgrade = UpgradeFighterService.new(@fighter, fighter_upgrade_params).call
+    valid_upgrade = UpgradeFighterValidationService.new(@fighter, fighter_upgrade_params).call
     
     if valid_upgrade[:valid]
       fighter_upgrade_params[:available_upgrade] = 0
