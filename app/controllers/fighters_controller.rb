@@ -51,12 +51,10 @@ class FightersController < ApplicationController
   def upgrade
     valid_upgrade = UpgradeFighterValidationService.new(@fighter, fighter_upgrade_params).call
     
-    if valid_upgrade[:valid]
-      fighter_upgrade_params[:available_upgrade] = 0
-    end
+    fighter_upgrade_params[:available_upgrade] = 0 if valid_upgrade
 
     respond_to do |format|
-      if @fighter.update(fighter_upgrade_params)
+      if valid_upgrade && @fighter.update(fighter_upgrade_params)
         format.html { redirect_to @fighter, notice: 'Fighter was successfully upgraded.' }
       else
         format.html { render :shape }
