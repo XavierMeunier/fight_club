@@ -1,14 +1,12 @@
 class FightersController < ApplicationController
-  before_action :set_fighter, only: [:show, :edit, :update, :destroy]
+  before_action :set_fighter, only: [:show, :edit, :shape, :update, :upgrade, :destroy]
 
   # GET /fighters
-  # GET /fighters.json
   def index
     @fighters = Fighter.all
   end
 
   # GET /fighters/1
-  # GET /fighters/1.json
   def show
   end
 
@@ -21,32 +19,47 @@ class FightersController < ApplicationController
   def edit
   end
 
+  # GET /fighters/1/shape
+  def shape
+  end
+
   # POST /fighters
-  # POST /fighters.json
   def create
     @fighter = Fighter.new(fighter_params)
 
     respond_to do |format|
       if @fighter.save
         format.html { redirect_to @fighter, notice: 'Fighter was successfully created.' }
-        format.json { render :show, status: :created, location: @fighter }
       else
         format.html { render :new }
-        format.json { render json: @fighter.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /fighters/1
-  # PATCH/PUT /fighters/1.json
   def update
     respond_to do |format|
       if @fighter.update(fighter_params)
         format.html { redirect_to @fighter, notice: 'Fighter was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fighter }
       else
         format.html { render :edit }
-        format.json { render json: @fighter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /fighters/1
+  def upgrade
+    valid_upgrade = UpgradeFighterService.new(@fighter, fighter_upgrade_params).call
+    
+    if valid_upgrade[:valid]
+      fighter_upgrade_params[:available_upgrade] = 0
+    end
+
+    respond_to do |format|
+      if @fighter.update(fighter_upgrade_params)
+        format.html { redirect_to @fighter, notice: 'Fighter was successfully upgraded.' }
+      else
+        format.html { render :shape }
       end
     end
   end
@@ -57,7 +70,6 @@ class FightersController < ApplicationController
     @fighter.destroy
     respond_to do |format|
       format.html { redirect_to fighters_url, notice: 'Fighter was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +81,11 @@ class FightersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fighter_params
-      params.require(:fighter).permit(:name, :health, :strengh, :experience, :level, :available_upgrade)
+      params.require(:fighter).permit(:name)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def fighter_upgrade_params
+      params.require(:fighter).permit(:health, :strength)
     end
 end
