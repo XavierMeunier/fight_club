@@ -1,3 +1,11 @@
+Given("a fighter exists") do
+  @fighter = create(:fighter)
+end
+
+Given("a fighter without available upgrade exists") do
+  @fighter = create(:fighter, :advanced_fighter, :without_avaible_upgrade)
+end
+
 Given("Multiple fighters exist") do
   @fighter1 = create(:fighter)
   @fighter2 = create(:fighter)
@@ -12,4 +20,27 @@ Then("I should see all fighters") do
   expect(page).to have_css("td", :text => @fighter3.name)
   expect(page).to have_css("td", :text => @fighter4.name)
   expect(page).to have_css("td", :text => @fighter5.name)
+end
+
+Then("I should see fighter attributes") do
+  expect(page).to have_css("p", :text => @fighter.name)
+  expect(page).to have_css("p", :text => @fighter.health)
+  expect(page).to have_css("p", :text => @fighter.strength)
+  expect(page).to have_css("p", :text => @fighter.experience)
+  expect(page).to have_css("p", :text => @fighter.level)
+  expect(page).to have_css("p", :text => @fighter.available_upgrade)
+end
+
+Then("I should see shape button") do
+  expect(page).to have_css("a", :text => "Shape")
+end
+
+Then("I should not see shape button") do
+  expect(page).to_not have_css("a", :text => "Shape")
+end
+
+When("I complete the shape upgrade fighter") do
+  find(:xpath, "//input[@id='fighter_health_range']").set (@fighter.health + @fighter.available_upgrade/2)
+  find(:xpath, "//input[@id='fighter_strength_range']").set (@fighter.strength + @fighter.available_upgrade/2)
+  click_button("Shape")
 end
