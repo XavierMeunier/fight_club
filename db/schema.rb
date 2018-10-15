@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_10_15_083631) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "fighters", force: :cascade do |t|
     t.string "name"
     t.integer "health"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2018_10_15_083631) do
     t.integer "looser_punches"
     t.integer "victory_type"
     t.integer "rounds"
-    t.integer "winner_id"
-    t.integer "looser_id"
+    t.bigint "winner_id"
+    t.bigint "looser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["looser_id"], name: "index_fights_on_looser_id"
