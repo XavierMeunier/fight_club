@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_15_083631) do
   create_table "fights", force: :cascade do |t|
     t.integer "winner_punches"
     t.integer "looser_punches"
-    t.string "victory_type"
+    t.integer "victory_type"
     t.integer "rounds"
     t.integer "winner_id"
     t.integer "looser_id"

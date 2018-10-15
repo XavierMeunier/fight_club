@@ -6,4 +6,6 @@ class Fight < ApplicationRecord
   validates :winner_punches, :looser_punches, :victory_type, :rounds, :winner, :looser, presence: true
   validates :winner_punches, :looser_punches, :rounds, numericality: { only_integer: true }
 
+  enum victory_type: [:KO, :decision]
+
 end

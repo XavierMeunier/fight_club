@@ -16,4 +16,6 @@ RSpec.describe Fight, type: :model do
   it { should validate_numericality_of(:looser_punches).only_integer }
   it { should validate_numericality_of(:rounds).only_integer }
 
+  it {should define_enum_for(:victory_type).with_values([:KO, :decision]) }
+
 end
