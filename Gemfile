@@ -52,6 +52,9 @@ gem "paperclip", "~> 6.0.0"
 # Paginator gem
 gem 'kaminari'
 
+# Add fake data generator
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -62,8 +65,6 @@ group :development, :test do
   # Add factories
   gem 'factory_bot_rails'
 
-  # Add fake data generator
-  gem 'faker'
 end
 
 group :development do
