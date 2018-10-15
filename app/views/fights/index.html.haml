@@ -22,8 +22,8 @@
         %td= fight.looser.name
         %td= fight.victory_type
         %td= fight.rounds
-        %td= link_to 'Show', fight
+        %td= link_to 'Show', fight, class: "btn btn-info"
 
 %br
 
-
+= paginate @fights

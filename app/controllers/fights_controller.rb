@@ -3,7 +3,7 @@ class FightsController < ApplicationController
 
   # GET /fights
   def index
-    @fights = Fight.all
+    @fights = Fight.all.order(created_at: :desc).page params[:page]
   end
 
   # GET /fights/1
