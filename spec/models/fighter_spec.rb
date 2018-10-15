@@ -34,4 +34,27 @@ RSpec.describe Fighter, type: :model do
                                   )
   end
 
+  describe "add_experience_from_fight" do
+
+    let(:fighter1) { create(:fighter) }
+    let(:fighter2) { create(:fighter) }
+
+    it "should add experience to fighter" do
+      fighter1.add_experience_from_fight(:winner, 5, 3, 1, fighter2.id)
+
+      expect(fighter1.experience).to eql(39)
+      expect(fighter1.level).to eql(1)
+    end
+
+    it "should level up fighter" do
+      fighter1.experience = LEVELS["levels"][1] - 10
+      fighter1.add_experience_from_fight(:winner, 5, 3, 1, fighter2.id)
+
+      expect(fighter1.experience).to eql(0)
+      expect(fighter1.level).to eql(2)
+      expect(fighter1.available_upgrade).to eql(20)
+    end
+
+  end
+
 end
