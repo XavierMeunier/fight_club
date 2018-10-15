@@ -1,21 +1,21 @@
 = content_for :title, 'Fight'
 
-%p
+%p.winner_punches
   %b Winner punches:
   = @fight.winner_punches
-%p
+%p.looser_punches
   %b Looser punches:
   = @fight.looser_punches
-%p
+%p.victory_type
   %b Victory type:
   = @fight.victory_type
-%p
+%p.rounds
   %b Rounds:
   = @fight.rounds
-%p
+%p.winner
   %b Winner:
   = @fight.winner.name
-%p
+%p.looser
   %b Looser:
   = @fight.looser.name
 
