@@ -22,6 +22,10 @@ Given("I visit fights page") do
   visit fights_path
 end
 
+Given("I visit new fight page") do
+  visit new_fight_path
+end
+
 When("I click on {string}") do |button_name|
   click_on button_name
 end

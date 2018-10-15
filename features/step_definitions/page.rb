@@ -21,3 +21,11 @@ end
 Then("I should be on fights page") do
   expect(page).to have_css("h1", :text => "Fights")
 end
+
+Then("I should be on new fight page") do
+  expect(page).to have_css("h1", :text => "New fight")
+end
+
+Then("I should be on fight page") do
+  expect(page).to have_css("h1", :text => "Fight")
+end

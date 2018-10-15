@@ -64,3 +64,12 @@ Feature: Visitor navigation
     Given I visit home page
     When I click on "Fights"
     Then I should be on fights page
+
+  Scenario: Check access to new fight
+    Given I visit new fight page
+    Then I should be on new fight page
+
+  Scenario: Check navigation to new fight
+    Given I visit fights page
+    When I click on "New Fight"
+    Then I should be on new fight page
