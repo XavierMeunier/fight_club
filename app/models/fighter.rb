@@ -1,7 +1,7 @@
 class Fighter < ApplicationRecord
 
   has_many :winned_fights, class_name: 'Fight', foreign_key: :winner_id, inverse_of: 'winner'
-  has_many :loosed_fights, class_name: 'Fight', foreign_key: :looser_id, inverse_of: 'looser'
+  has_many :lost_fights, class_name: 'Fight', foreign_key: :looser_id, inverse_of: 'looser'
 
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.jpg"
