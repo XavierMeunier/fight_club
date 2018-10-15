@@ -12,8 +12,8 @@ RSpec.describe Fight, type: :model do
   it { should belong_to(:winner) }
   it { should belong_to(:looser) }
 
-  it { should validate_numericality_of(:winner_punches) }
-  it { should validate_numericality_of(:looser_punches) }
-  it { should validate_numericality_of(:rounds) }
+  it { should validate_numericality_of(:winner_punches).only_integer }
+  it { should validate_numericality_of(:looser_punches).only_integer }
+  it { should validate_numericality_of(:rounds).only_integer }
 
 end
