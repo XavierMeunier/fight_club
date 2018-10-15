@@ -55,8 +55,8 @@ When("I complete the shape upgrade fighter form") do
 end
 
 When("I complete the new fighter form") do
-  @fighter = build(:fighter, :with_avatar)
+  @fighter = build(:fighter)
   fill_in('Name', :with => @fighter.name)
-  attach_file('Avatar', @fighter.avatar.path)
-  click_button("Create Fighter")  
+  attach_file('Avatar', "#{Rails.root}/spec/support/features/image.jpg")
+  click_button("Create Fighter")
 end

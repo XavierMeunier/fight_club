@@ -40,6 +40,10 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+at_exit do
+  FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+end
+
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
