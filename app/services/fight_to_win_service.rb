@@ -19,6 +19,7 @@ private
     punches_counter[fighter_1.id] = 0
     punches_counter[fighter_2.id] = 0
 
+    # Fight until KO or time out
     while fighter_1.health > 0 && fighter_2.health > 0 && fight_exchange < 99 do
       strikers = fighter_order
       
