@@ -1,5 +1,5 @@
 class FightsController < ApplicationController
-  before_action :set_fight, only: [:show, :edit, :update, :destroy]
+  before_action :set_fight, only: [:show]
 
   # GET /fights
   def index
@@ -18,7 +18,7 @@ class FightsController < ApplicationController
   # POST /fights
   def create
     fight_info = FightToWinService.new(fight_params).call
-    
+
     @fight = Fight.new(fight_info)
 
     respond_to do |format|
@@ -31,6 +31,7 @@ class FightsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_fight
       @fight = Fight.find(params[:id])

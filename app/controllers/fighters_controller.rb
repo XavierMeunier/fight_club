@@ -50,7 +50,7 @@ class FightersController < ApplicationController
   # POST /fighters/1/upgrade
   def upgrade
     valid_upgrade = UpgradeFighterValidationService.new(@fighter, fighter_input_upgrade_params).call
-    
+
     if valid_upgrade
       # Not using fighter_input_upgrade_params to reset available_upgrade without any external input
       fighter_upgrade_params = fighter_input_upgrade_params.merge(available_upgrade: 0)
@@ -74,6 +74,7 @@ class FightersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_fighter
       @fighter = Fighter.find(params[:id])
@@ -88,5 +89,4 @@ class FightersController < ApplicationController
     def fighter_input_upgrade_params
       params.require(:fighter).permit(:health, :strength)
     end
-
 end

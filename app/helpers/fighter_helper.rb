@@ -1,5 +1,4 @@
 module FighterHelper
-
   def given_punches
     punches = 0
     punches += @fighter.winned_fights.pluck(:winner_punches).inject(&:+).to_i
@@ -13,5 +12,4 @@ module FighterHelper
     punches += @fighter.lost_fights.pluck(:winner_punches).inject(&:+).to_i
     punches
   end
-
 end

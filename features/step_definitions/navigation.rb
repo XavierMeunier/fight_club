@@ -1,35 +1,35 @@
-Given("I visit home page") do
+Given('I visit home page') do
   visit root_path
 end
 
-Given("I visit fighters page") do
+Given('I visit fighters page') do
   visit fighters_path
 end
 
-Given("I visit fighter page") do
+Given('I visit fighter page') do
   visit fighter_path(@fighter)
 end
 
-Given("I visit fighter shape page") do
+Given('I visit fighter shape page') do
   visit shape_fighter_path(@fighter)
 end
 
-Given("I visit new fighter page") do
+Given('I visit new fighter page') do
   visit new_fighter_path(@fighter)
 end
 
-Given("I visit fights page") do
+Given('I visit fights page') do
   visit fights_path
 end
 
-Given("I visit new fight page") do
+Given('I visit new fight page') do
   visit new_fight_path
 end
 
-When("I click on {string}") do |button_name|
+When('I click on {string}') do |button_name|
   click_on button_name
 end
 
-When "I click on a fighter profile" do
-  click_on("Show", match: :first)
+When 'I click on a fighter profile' do
+  click_on('Show', match: :first)
 end
