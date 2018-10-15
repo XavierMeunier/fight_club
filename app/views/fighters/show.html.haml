@@ -1,30 +1,48 @@
 = content_for :title, "Fighter"
 
-%p.avatar
-  = image_tag @fighter.avatar.url(:medium)
-%p.name
-  %b Name:
-  = @fighter.name
-%p.health
-  %b Health:
-  = @fighter.health
-%p.strength
-  %b strength:
-  = @fighter.strength
-%p.experience
-  %b Experience:
-  = @fighter.experience
-%p.level
-  %b Level:
-  = @fighter.level
-%p.available_upgrade
-  %b Available upgrade:
-  = @fighter.available_upgrade
+.row
+  .div{class: "col-md-4"}
+    %p.avatar
+      = image_tag @fighter.avatar.url(:medium)
+  .div{class: "col-md-4"}
+    %p.name
+      %b Name:
+      = @fighter.name
+    %p.health
+      %b Health:
+      = @fighter.health
+    %p.strength
+      %b strength:
+      = @fighter.strength
+    %p.experience
+      %b Experience:
+      = @fighter.experience
+    %p.level
+      %b Level:
+      = @fighter.level
+    %p.available_upgrade
+      %b Available upgrade:
+      = @fighter.available_upgrade
+  .div{class: "col-md-4"}
+    %p.winned_fights
+      %b Won fights
+      = "#{@fighter.winned_fights.count} (#{@fighter.winned_fights.KO.count} by KO)"
+    %p.lost_fights
+      %b Lost fights
+      = "#{@fighter.loosed_fights.count}"
+    %p.given_punches
+      %b Given punches
+      = given_punches
+    %p.received_punches
+      %b Received punches
+      = received_punches
 
-= link_to 'Shape', shape_fighter_path(@fighter), class: "btn btn-success" if @fighter.available_upgrade > 0
+.row
+  .div{class: "col-md-4 offset-md-4"}
+    = link_to 'Shape', shape_fighter_path(@fighter), class: "btn btn-success" if @fighter.available_upgrade > 0
 
-= link_to 'Edit', edit_fighter_path(@fighter), class: "btn btn-warning"
+    = link_to 'Edit', edit_fighter_path(@fighter), class: "btn btn-warning"
 
-= link_to 'Destroy', @fighter, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+    = link_to 'Destroy', @fighter, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
-= link_to 'Back', fighters_path, class: "btn btn-secondary"
+    = link_to 'Back', fighters_path, class: "btn btn-secondary"

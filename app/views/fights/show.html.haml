@@ -1,22 +1,26 @@
 = content_for :title, 'Fight'
 
-%p.winner_punches
-  %b Winner punches:
-  = @fight.winner_punches
-%p.looser_punches
-  %b Looser punches:
-  = @fight.looser_punches
-%p.victory_type
-  %b Victory type:
-  = @fight.victory_type
-%p.rounds
-  %b Rounds:
-  = @fight.rounds
-%p.winner
-  %b Winner:
-  = @fight.winner.name
-%p.looser
-  %b Looser:
-  = @fight.looser.name
+.row
+  .div{class: "col-md-4"}
+    %p.victory_type
+      %b Victory type:
+      = @fight.victory_type
+    %p.rounds
+      %b Rounds:
+      = @fight.rounds
+  .div{class: "col-md-4"}
+    %p.winner
+      %b Winner:
+      = @fight.winner.name
+    %p.winner_punches
+      %b Winner punches:
+      = @fight.winner_punches
+  .div{class: "col-md-4"}
+    %p.looser
+      %b Looser:
+      = @fight.looser.name
+    %p.looser_punches
+      %b Looser punches:
+      = @fight.looser_punches
 
 = link_to 'Back', fights_path, class: 'btn btn-secondary'

@@ -10,6 +10,9 @@ class Fight < ApplicationRecord
 
   after_create_commit  :add_experience_to_fighters
 
+  scope :KO,        -> { where(victory_type: :KO) }
+  scope :decision,  -> { where(victory_type: :decision) }
+
 private
 
   def add_experience_to_fighters
