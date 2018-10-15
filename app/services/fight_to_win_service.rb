@@ -1,8 +1,8 @@
 class FightToWinService
 
   def initialize(fighters)
-    @fighter_1 = fighters[:winner]
-    @fighter_2 = fighters[:looser]
+    @fighter_1 = Fighter.find(fighters[:winner])
+    @fighter_2 = Fighter.find(fighters[:looser])
   end
 
   def call
@@ -19,11 +19,11 @@ private
     punches_counter[fighter_1.id] = 0
     punches_counter[fighter_2.id] = 0
 
-    while fighter_1.health > 0 && fighter_2.health > 0 && fight_exchange < 999 do
+    while fighter_1.health > 0 && fighter_2.health > 0 && fight_exchange < 99 do
       strikers = fighter_order
       
       # Define punch force
-      tiredness_factor = rand(0.0..(fight_exchange.to_f/1000)).round(2)
+      tiredness_factor = rand(0.0..(fight_exchange.to_f/100)).round(2)
       punch_power = rand(0.0..(1.0 - tiredness_factor)).round(2)
 
       strikers[1].health = strikers[1].health - (strikers[0].strength * punch_power)
@@ -36,7 +36,7 @@ private
     fight_result = compute_fight_statistics(fighter_1, fighter_2, punches_counter)
 
     # A round every ten fight_exchange
-    fight_result[:rounds]= (fight_exchange + 100) / 100
+    fight_result[:rounds]= (fight_exchange + 10) / 10
     
     fight_result
   end

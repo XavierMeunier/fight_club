@@ -2,13 +2,11 @@ class FightsController < ApplicationController
   before_action :set_fight, only: [:show, :edit, :update, :destroy]
 
   # GET /fights
-  # GET /fights.json
   def index
     @fights = Fight.all
   end
 
   # GET /fights/1
-  # GET /fights/1.json
   def show
   end
 
@@ -17,47 +15,21 @@ class FightsController < ApplicationController
     @fight = Fight.new
   end
 
-  # GET /fights/1/edit
-  def edit
-  end
-
   # POST /fights
-  # POST /fights.json
   def create
-    @fight = Fight.new(fight_params)
+    fight_info = FightToWinService.new(fight_params).call
+    
+    @fight = Fight.new(fight_info)
+
+    Rails.logger.debug "fight_info: #{fight_info.inspect}"
+    puts "fight_info: #{fight_info.inspect}"
 
     respond_to do |format|
       if @fight.save
-        format.html { redirect_to @fight, notice: 'Fight was successfully created.' }
-        format.json { render :show, status: :created, location: @fight }
+        format.html { redirect_to @fight, notice: 'Fight was successfully battled.' }
       else
         format.html { render :new }
-        format.json { render json: @fight.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /fights/1
-  # PATCH/PUT /fights/1.json
-  def update
-    respond_to do |format|
-      if @fight.update(fight_params)
-        format.html { redirect_to @fight, notice: 'Fight was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fight }
-      else
-        format.html { render :edit }
-        format.json { render json: @fight.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /fights/1
-  # DELETE /fights/1.json
-  def destroy
-    @fight.destroy
-    respond_to do |format|
-      format.html { redirect_to fights_url, notice: 'Fight was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +41,6 @@ class FightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fight_params
-      params.require(:fight).permit(:winner_punches, :looser_punches, :victory_type, :rounds, :winner_id, :looser_id)
+      params.require(:fight).permit(:winner, :looser)
     end
 end
