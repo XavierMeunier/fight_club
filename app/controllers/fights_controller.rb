@@ -21,9 +21,6 @@ class FightsController < ApplicationController
     
     @fight = Fight.new(fight_info)
 
-    Rails.logger.debug "fight_info: #{fight_info.inspect}"
-    puts "fight_info: #{fight_info.inspect}"
-
     respond_to do |format|
       if @fight.save
         format.html { redirect_to @fight, notice: 'Fight was successfully battled.' }
