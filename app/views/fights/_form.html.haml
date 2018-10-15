@@ -4,12 +4,9 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :winner_punches
-    = f.input :looser_punches
-    = f.input :victory_type
-    = f.input :rounds
-    = f.association :winner
-    = f.association :looser
+    = f.input :winner, collection: Fighter.all.order(:level).map { |fighter| ["lvl#{fighter.level} - #{fighter.name}", fighter.id] }, prompt: 'Choose a Fighter', label: 'Fighter 1'
+
+    = f.input :looser, collection: Fighter.all.order(:level).map { |fighter| ["lvl#{fighter.level} - #{fighter.name}", fighter.id] }, prompt: 'Choose a Fighter', label: 'Fighter 2'
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-success'

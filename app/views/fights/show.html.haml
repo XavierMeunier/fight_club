@@ -1,4 +1,4 @@
-%p#notice= notice
+= content_for :title, 'Fight'
 
 %p
   %b Winner punches:
@@ -14,11 +14,9 @@
   = @fight.rounds
 %p
   %b Winner:
-  = @fight.winner
+  = @fight.winner.name
 %p
   %b Looser:
-  = @fight.looser
+  = @fight.looser.name
 
-= link_to 'Edit', edit_fight_path(@fight)
-\|
-= link_to 'Back', fights_path
+= link_to 'Back', fights_path, class: 'btn btn-secondary'

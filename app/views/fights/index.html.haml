@@ -1,9 +1,13 @@
-= content_for :title, "Fights"
+= content_for :title, 'Fights'
+
+= link_to 'New Fight', new_fight_path, class: 'btn btn-success'
 
 %table.table
   %thead
     %tr
+      %th 
       %th Winner
+      %th 
       %th Looser
       %th Victory type
       %th Rounds
@@ -12,12 +16,14 @@
   %tbody
     - @fights.each do |fight|
       %tr
-        %td= fight.winner
-        %td= fight.looser
+        %td= fight.id
+        %td= fight.winner.name
+        %td vs
+        %td= fight.looser.name
         %td= fight.victory_type
         %td= fight.rounds
         %td= link_to 'Show', fight
 
 %br
 
-= link_to 'New Fight', new_fight_path
+
