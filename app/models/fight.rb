@@ -8,4 +8,13 @@ class Fight < ApplicationRecord
 
   enum victory_type: [:KO, :decision]
 
+  after_create_commit  :add_experience_to_fighters
+
+private
+
+  def add_experience_to_fighters
+    self.winner.add_experience_from_fight(:winner, self.winner_punches, self.looser_punches, self.rounds, self.looser_id)
+    self.looser.add_experience_from_fight(:looser, self.looser_punches, self.winner_punches, self.rounds, self.winner_id)
+  end
+
 end
