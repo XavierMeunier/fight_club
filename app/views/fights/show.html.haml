@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Winner punches:
+  = @fight.winner_punches
+%p
+  %b Looser punches:
+  = @fight.looser_punches
+%p
+  %b Victory type:
+  = @fight.victory_type
+%p
+  %b Rounds:
+  = @fight.rounds
+%p
+  %b Winner:
+  = @fight.winner
+%p
+  %b Looser:
+  = @fight.looser
+
+= link_to 'Edit', edit_fight_path(@fight)
+\|
+= link_to 'Back', fights_path

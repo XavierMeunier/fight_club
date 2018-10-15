@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_202949) do
+ActiveRecord::Schema.define(version: 2018_10_15_083631) do
 
   create_table "fighters", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 2018_10_14_202949) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "winner_punches"
+    t.integer "looser_punches"
+    t.string "victory_type"
+    t.integer "rounds"
+    t.integer "winner_id"
+    t.integer "looser_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["looser_id"], name: "index_fights_on_looser_id"
+    t.index ["winner_id"], name: "index_fights_on_winner_id"
   end
 
 end

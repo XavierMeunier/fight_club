@@ -1,0 +1,15 @@
+-# frozen_string_literal: true
+= simple_form_for(@fight) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :winner_punches
+    = f.input :looser_punches
+    = f.input :victory_type
+    = f.input :rounds
+    = f.association :winner
+    = f.association :looser
+
+  .form-actions
+    = f.button :submit

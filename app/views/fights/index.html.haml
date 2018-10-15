@@ -1,0 +1,31 @@
+%h1 Listing fights
+
+%table
+  %thead
+    %tr
+      %th Winner punches
+      %th Looser punches
+      %th Victory type
+      %th Rounds
+      %th Winner
+      %th Looser
+      %th
+      %th
+      %th
+
+  %tbody
+    - @fights.each do |fight|
+      %tr
+        %td= fight.winner_punches
+        %td= fight.looser_punches
+        %td= fight.victory_type
+        %td= fight.rounds
+        %td= fight.winner
+        %td= fight.looser
+        %td= link_to 'Show', fight
+        %td= link_to 'Edit', edit_fight_path(fight)
+        %td= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Fight', new_fight_path

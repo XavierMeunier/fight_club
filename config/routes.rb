@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :fighters
   get '/fighters/:id/shape',     to: "fighters#shape",   as: "shape_fighter"
   post '/fighters/:id/upgrade',  to: "fighters#upgrade", as: "upgrade_fighter"
+
+  resources :fights
 end
